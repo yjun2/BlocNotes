@@ -75,6 +75,9 @@ class DetailViewController: UIViewController, UITextViewDelegate {
             note = updateNote(existingNote)
         } else {
             note = addNewNote()
+            if let newNote = note {
+                noteToView = newNote
+            }
         }
         
         if let note = note {
