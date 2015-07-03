@@ -9,11 +9,14 @@
 /* Begin PBXBuildFile section */
 		2E80571F1B4254F2006B1C0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E80571E1B4254F2006B1C0F /* AppDelegate.swift */; };
 		2E8057221B4254F2006B1C0F /* BlocNotes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2E8057201B4254F2006B1C0F /* BlocNotes.xcdatamodeld */; };
-		2E8057241B4254F2006B1C0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8057231B4254F2006B1C0F /* ViewController.swift */; };
 		2E8057271B4254F2006B1C0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E8057251B4254F2006B1C0F /* Main.storyboard */; };
 		2E8057291B4254F2006B1C0F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E8057281B4254F2006B1C0F /* Images.xcassets */; };
 		2E80572C1B4254F2006B1C0F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E80572A1B4254F2006B1C0F /* LaunchScreen.xib */; };
 		2E8057381B4254F2006B1C0F /* BlocNotesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8057371B4254F2006B1C0F /* BlocNotesTests.swift */; };
+		2E8057421B4256F2006B1C0F /* MainNotesListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8057411B4256F2006B1C0F /* MainNotesListTableViewController.swift */; };
+		2EC28A341B438CB700ABB1BD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC28A331B438CB700ABB1BD /* DetailViewController.swift */; };
+		2EC28A421B43AB3A00ABB1BD /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC28A411B43AB3A00ABB1BD /* Note.swift */; };
+		2EC28A441B43AB3B00ABB1BD /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC28A431B43AB3B00ABB1BD /* Content.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,13 +34,16 @@
 		2E80571D1B4254F2006B1C0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E80571E1B4254F2006B1C0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E8057211B4254F2006B1C0F /* BlocNotes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BlocNotes.xcdatamodel; sourceTree = "<group>"; };
-		2E8057231B4254F2006B1C0F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2E8057261B4254F2006B1C0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2E8057281B4254F2006B1C0F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2E80572B1B4254F2006B1C0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		2E8057311B4254F2006B1C0F /* BlocNotesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlocNotesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E8057361B4254F2006B1C0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E8057371B4254F2006B1C0F /* BlocNotesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlocNotesTests.swift; sourceTree = "<group>"; };
+		2E8057411B4256F2006B1C0F /* MainNotesListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNotesListTableViewController.swift; sourceTree = "<group>"; };
+		2EC28A331B438CB700ABB1BD /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		2EC28A411B43AB3A00ABB1BD /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		2EC28A431B43AB3B00ABB1BD /* Content.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,8 +85,11 @@
 		2E80571B1B4254F2006B1C0F /* BlocNotes */ = {
 			isa = PBXGroup;
 			children = (
+				2EC28A431B43AB3B00ABB1BD /* Content.swift */,
+				2EC28A411B43AB3A00ABB1BD /* Note.swift */,
 				2E80571E1B4254F2006B1C0F /* AppDelegate.swift */,
-				2E8057231B4254F2006B1C0F /* ViewController.swift */,
+				2E8057411B4256F2006B1C0F /* MainNotesListTableViewController.swift */,
+				2EC28A331B438CB700ABB1BD /* DetailViewController.swift */,
 				2E8057251B4254F2006B1C0F /* Main.storyboard */,
 				2E8057281B4254F2006B1C0F /* Images.xcassets */,
 				2E80572A1B4254F2006B1C0F /* LaunchScreen.xib */,
@@ -215,9 +224,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E8057241B4254F2006B1C0F /* ViewController.swift in Sources */,
+				2EC28A421B43AB3A00ABB1BD /* Note.swift in Sources */,
 				2E80571F1B4254F2006B1C0F /* AppDelegate.swift in Sources */,
+				2E8057421B4256F2006B1C0F /* MainNotesListTableViewController.swift in Sources */,
 				2E8057221B4254F2006B1C0F /* BlocNotes.xcdatamodeld in Sources */,
+				2EC28A341B438CB700ABB1BD /* DetailViewController.swift in Sources */,
+				2EC28A441B43AB3B00ABB1BD /* Content.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +427,7 @@
 				2E80573D1B4254F2006B1C0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2E80573E1B4254F2006B1C0F /* Build configuration list for PBXNativeTarget "BlocNotesTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +436,7 @@
 				2E8057401B4254F2006B1C0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
