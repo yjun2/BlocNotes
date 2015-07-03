@@ -70,8 +70,7 @@ class MainNotesListTableViewController: UITableViewController, DetailViewControl
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "addNewNote" {
-            let navController = segue.destinationViewController as! UINavigationController
-            let addNewNoteVC = navController.topViewController as! DetailViewController
+            let addNewNoteVC = segue.destinationViewController as! DetailViewController
             addNewNoteVC.delegate = self
             addNewNoteVC.managedContext = managedContext
             
@@ -79,8 +78,7 @@ class MainNotesListTableViewController: UITableViewController, DetailViewControl
             addNewNoteVC.noteCount = notes.count
             
         } else if segue.identifier == "editNote" {
-            let navController = segue.destinationViewController as! UINavigationController
-            let editNoteVC = navController.topViewController as! DetailViewController
+            let editNoteVC = segue.destinationViewController as! DetailViewController
             editNoteVC.delegate = self
             editNoteVC.managedContext = managedContext
             
@@ -111,13 +109,13 @@ class MainNotesListTableViewController: UITableViewController, DetailViewControl
     }
 
     // MARK: - DetailViewControllerDelegate
-    func detailViewControllerDidCancel(controller: DetailViewController) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
     
     func detailViewController(controller: DetailViewController, didFinishAddNewNote: Note) {
         fetchAllNotes()
         tableView.reloadData()
-        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func detailViewControllerDidNoTextEntered(controller: DetailViewController) {
+        controller.navigationController?.popViewControllerAnimated(true)
     }
 }

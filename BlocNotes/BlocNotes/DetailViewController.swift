@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 protocol DetailViewControllerDelegate: class {
-    func detailViewControllerDidCancel(controller: DetailViewController)
+    func detailViewControllerDidNoTextEntered(controller: DetailViewController)
     func detailViewController(controller: DetailViewController, didFinishAddNewNote: Note)
 }
 
@@ -28,6 +28,7 @@ class DetailViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         if let existingNote = noteToView {
             title = existingNote.title
             noteTitle.text = existingNote.title
@@ -39,22 +40,12 @@ class DetailViewController: UIViewController, UITextViewDelegate {
         bodyTextView.delegate = self
     }
     
-    @IBAction func save(sender: AnyObject) {
-        let note: Note?
-        
-        if let existingNote = noteToView {
-            note = updateNote(existingNote)
-        } else {
-            note = addNewNote()
-        }
-        
-        if let note = note {
-            delegate?.detailViewController(self, didFinishAddNewNote: note)
-        }
+    override func viewWillDisappear(animated: Bool) {
+        save()
     }
     
-    @IBAction func cancel(sender: AnyObject) {
-        delegate?.detailViewControllerDidCancel(self)
+    @IBAction func done(sender: AnyObject) {
+        save()
     }
     
     // Mark: UITextViewDelegate
@@ -77,6 +68,20 @@ class DetailViewController: UIViewController, UITextViewDelegate {
         aTextView.text = placeholder
     }
     
+    func save() {
+        let note: Note?
+        
+        if let existingNote = noteToView {
+            note = updateNote(existingNote)
+        } else {
+            note = addNewNote()
+        }
+        
+        if let note = note {
+            delegate?.detailViewController(self, didFinishAddNewNote: note)
+        }
+    }
+    
     func updateNote(note: Note) -> Note? {
         // should be able update the note title in user story 2
         
@@ -97,29 +102,37 @@ class DetailViewController: UIViewController, UITextViewDelegate {
     }
     
     func addNewNote() -> Note? {
-        let noteEntity = NSEntityDescription.entityForName("Note", inManagedObjectContext: managedContext)
-        let note = Note(entity: noteEntity!, insertIntoManagedObjectContext: managedContext)
+        var tmpNote: Note? = nil
         
-        // temporarily setting the note title this way.  
-        // note title will be changed to UITextField in user story 2
-        note.title = "\(noteTitle.text!)_\(noteCount++)"
+        if count(bodyTextView.text) > 0 && bodyTextView.text != PLACEHOLDER_TEXT {
+            let noteEntity = NSEntityDescription.entityForName("Note", inManagedObjectContext: managedContext)
+            let note = Note(entity: noteEntity!, insertIntoManagedObjectContext: managedContext)
         
-        note.dateCreated = NSDate()
-        note.dateModified = NSDate()
+            // temporarily setting the note title this way.
+            // note title will be changed to UITextField in user story 2
+            note.title = "\(noteTitle.text!)_\(noteCount++)"
         
-        let contentEntity = NSEntityDescription.entityForName("Content", inManagedObjectContext: managedContext)
-        let content = Content(entity: contentEntity!, insertIntoManagedObjectContext: managedContext)
-        content.body = bodyTextView.text
-        note.content = content
+            note.dateCreated = NSDate()
+            note.dateModified = NSDate()
         
-        var error: NSError?
-        if !managedContext.save(&error) {
-            println("Could not save: \(error)")
-            return nil
+            let contentEntity = NSEntityDescription.entityForName("Content", inManagedObjectContext: managedContext)
+            let content = Content(entity: contentEntity!, insertIntoManagedObjectContext: managedContext)
+        
+            content.body = bodyTextView.text
+            note.content = content
+        
+            var error: NSError?
+            if !managedContext.save(&error) {
+                println("Could not save: \(error)")
+            } else {
+                println("A new note saved")
+                tmpNote = note
+            }
         } else {
-            println("A new note saved")
-            return note
+            delegate?.detailViewControllerDidNoTextEntered(self)
         }
+        
+        return tmpNote
     }
     
 }

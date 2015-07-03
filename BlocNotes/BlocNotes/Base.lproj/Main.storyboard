@@ -28,7 +28,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="XF7-jW-8m6" kind="presentation" identifier="editNote" id="1ny-BE-3qB"/>
+                                    <segue destination="rBT-su-cfF" kind="show" identifier="editNote" id="cWU-zL-CAf"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -38,9 +38,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Bloc Notes" id="9RY-kV-ati">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="JLP-Eg-yna">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="2K4-um-WuO"/>
+                        <barButtonItem key="rightBarButtonItem" title="New" id="JLP-Eg-yna">
                             <connections>
-                                <segue destination="XF7-jW-8m6" kind="presentation" identifier="addNewNote" id="0ZV-FV-g2R"/>
+                                <segue destination="rBT-su-cfF" kind="show" identifier="addNewNote" id="xi1-9A-BVU"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -86,14 +87,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Note" id="lDi-Cu-fgG">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="PGI-pP-pYp">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="r1f-hN-fqo">
                             <connections>
-                                <action selector="cancel:" destination="rBT-su-cfF" id="WAH-8w-VfY"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="r1f-hN-fqo">
-                            <connections>
-                                <action selector="save:" destination="rBT-su-cfF" id="MJi-35-sFe"/>
+                                <action selector="done:" destination="rBT-su-cfF" id="e39-lQ-hYV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -104,7 +100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6XK-EM-bfz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2682" y="267"/>
+            <point key="canvasLocation" x="2078" y="267"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vpD-dV-3T7">
@@ -124,26 +120,9 @@
             </objects>
             <point key="canvasLocation" x="320" y="267"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="OOa-u5-tzH">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XF7-jW-8m6" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gGY-MT-iQS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="rBT-su-cfF" kind="relationship" relationship="rootViewController" id="9g4-nZ-7Zm"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dgf-ul-hFH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1870" y="267"/>
-        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0ZV-FV-g2R"/>
+        <segue reference="cWU-zL-CAf"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="1" green="0.75601980739999997" blue="0.26619099740000002" alpha="1" colorSpace="calibratedRGB"/>
 </document>
