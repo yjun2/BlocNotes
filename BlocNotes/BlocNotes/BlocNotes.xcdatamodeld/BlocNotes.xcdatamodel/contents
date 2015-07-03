@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14D136" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Content" representedClassName="BlocNotes.Content" syncable="YES">
+        <attribute name="body" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="content" inverseEntity="Note" syncable="YES"/>
+    </entity>
+    <entity name="Note" representedClassName="BlocNotes.Note" syncable="YES">
+        <attribute name="dateCreated" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="dateModified" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="content" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Content" inverseName="note" inverseEntity="Content" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Note" positionX="-45" positionY="0" width="128" height="105"/>
+        <element name="Content" positionX="-18" positionY="54" width="128" height="75"/>
+    </elements>
+</model>
