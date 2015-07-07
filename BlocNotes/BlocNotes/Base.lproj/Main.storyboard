@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Gky-kb-Sbu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Gky-kb-Sbu">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -19,13 +19,18 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oWa-6E-gKO" id="ihk-4Z-UNE">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RJZ-Pp-d7c">
-                                            <rect key="frame" x="15" y="11" width="571" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RJZ-Pp-d7c">
+                                            <rect key="frame" x="13" y="11" width="571" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="RJZ-Pp-d7c" firstAttribute="centerY" secondItem="ihk-4Z-UNE" secondAttribute="centerY" id="WMC-cZ-ZmO"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="RJZ-Pp-d7c" secondAttribute="trailing" constant="-25" id="k9v-bz-TNk"/>
+                                        <constraint firstItem="RJZ-Pp-d7c" firstAttribute="leading" secondItem="ihk-4Z-UNE" secondAttribute="leadingMargin" constant="5" id="uak-le-Jlf"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="rBT-su-cfF" kind="show" identifier="editNote" id="cWU-zL-CAf"/>
@@ -62,40 +67,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Note Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dy6-32-UNV">
-                                <rect key="frame" x="16" y="99" width="568" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DSe-Nm-g9f">
+                                <rect key="frame" x="15" y="72" width="568" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jnu-EC-76F">
-                                <rect key="frame" x="10" y="135" width="574" height="457"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="16" y="110" width="568" height="457"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Jnu-EC-76F" firstAttribute="trailing" secondItem="dy6-32-UNV" secondAttribute="trailing" id="2hz-OL-OIc"/>
-                            <constraint firstItem="Jnu-EC-76F" firstAttribute="top" secondItem="k3e-dk-rF7" secondAttribute="bottom" constant="71" id="FAx-3j-s71"/>
-                            <constraint firstItem="Jnu-EC-76F" firstAttribute="trailing" secondItem="HeV-hh-B79" secondAttribute="trailingMargin" id="Fqw-Js-IvE"/>
-                            <constraint firstAttribute="centerX" secondItem="Jnu-EC-76F" secondAttribute="centerX" constant="3" id="Rr9-sO-dyj"/>
-                            <constraint firstItem="dy6-32-UNV" firstAttribute="top" secondItem="k3e-dk-rF7" secondAttribute="bottom" constant="35" id="Spz-us-1jB"/>
-                            <constraint firstAttribute="centerX" secondItem="dy6-32-UNV" secondAttribute="centerX" id="l0W-QR-eIw"/>
-                            <constraint firstItem="qMF-Ik-wks" firstAttribute="top" secondItem="Jnu-EC-76F" secondAttribute="bottom" constant="8" symbolic="YES" id="ubl-0T-EfI"/>
+                            <constraint firstItem="Jnu-EC-76F" firstAttribute="top" secondItem="DSe-Nm-g9f" secondAttribute="bottom" constant="8" id="4eq-xg-fiC"/>
+                            <constraint firstItem="Jnu-EC-76F" firstAttribute="leading" secondItem="HeV-hh-B79" secondAttribute="leadingMargin" id="cDr-J1-tDW"/>
+                            <constraint firstItem="DSe-Nm-g9f" firstAttribute="leading" secondItem="HeV-hh-B79" secondAttribute="leadingMargin" constant="-1" id="edX-yx-2ds"/>
+                            <constraint firstItem="Jnu-EC-76F" firstAttribute="trailing" secondItem="HeV-hh-B79" secondAttribute="trailingMargin" id="fe0-a1-jX1"/>
+                            <constraint firstItem="DSe-Nm-g9f" firstAttribute="centerX" secondItem="Jnu-EC-76F" secondAttribute="centerX" constant="-1" id="pQ9-yW-EHu"/>
+                            <constraint firstItem="qMF-Ik-wks" firstAttribute="top" secondItem="Jnu-EC-76F" secondAttribute="bottom" constant="33" id="pfJ-23-hNt"/>
+                            <constraint firstItem="DSe-Nm-g9f" firstAttribute="trailing" secondItem="HeV-hh-B79" secondAttribute="trailingMargin" constant="-1" id="tRO-EV-DfN"/>
+                            <constraint firstItem="DSe-Nm-g9f" firstAttribute="top" secondItem="k3e-dk-rF7" secondAttribute="bottom" constant="8" id="xpC-6Y-LLb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Note" id="lDi-Cu-fgG">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="r1f-hN-fqo">
+                        <barButtonItem key="rightBarButtonItem" title="Share" id="r1f-hN-fqo">
                             <connections>
-                                <action selector="done:" destination="rBT-su-cfF" id="e39-lQ-hYV"/>
+                                <action selector="share:" destination="rBT-su-cfF" id="VSG-c4-F8Q"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="bodyTextView" destination="Jnu-EC-76F" id="HDZ-HT-LN8"/>
-                        <outlet property="noteTitle" destination="dy6-32-UNV" id="A1t-Y5-eX7"/>
+                        <outlet property="noteTitle" destination="DSe-Nm-g9f" id="T1B-uw-pn2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6XK-EM-bfz" userLabel="First Responder" sceneMemberID="firstResponder"/>

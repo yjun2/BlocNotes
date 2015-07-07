@@ -21,7 +21,8 @@ class DetailViewController: UIViewController, UITextViewDelegate {
     var noteCount = 0
     
     @IBOutlet weak var bodyTextView: UITextView!
-    @IBOutlet weak var noteTitle: UILabel!
+    @IBOutlet weak var noteTitle: UITextField!
+    
     
     weak var delegate: DetailViewControllerDelegate?
     
@@ -44,8 +45,17 @@ class DetailViewController: UIViewController, UITextViewDelegate {
         save()
     }
     
-    @IBAction func done(sender: AnyObject) {
-        save()
+    @IBAction func share(sender: AnyObject) {
+        var contentToShare = [String]()
+        
+        if count(bodyTextView.text) > 0 {
+            contentToShare.append(bodyTextView.text)
+        }
+        
+        if contentToShare.count > 0 {
+            let activityVC = UIActivityViewController(activityItems: contentToShare, applicationActivities: nil)
+            presentViewController(activityVC, animated: true, completion: nil)
+        }
     }
     
     // Mark: UITextViewDelegate
@@ -86,22 +96,37 @@ class DetailViewController: UIViewController, UITextViewDelegate {
     }
     
     func updateNote(note: Note) -> Note? {
-        // should be able update the note title in user story 2
+        var tmpNote: Note? = nil
+        var isChanged = false
         
-        // update the dateModified
-        note.dateModified = NSDate()
+        // let's make sure the title or content is changed otherwise don't update the note
+        if note.title != noteTitle.text {
+            note.title = noteTitle.text
+            isChanged = true
+        }
         
         // update the note content body
-        note.content.body = bodyTextView.text
-        
-        var error: NSError?
-        if !managedContext.save(&error) {
-            println("Could not save: \(error)")
-            return nil
-        } else {
-            println("Note updated")
-            return note
+        if note.content.body != bodyTextView.text {
+            note.content.body = bodyTextView.text
+            isChanged = true
         }
+        
+        if isChanged {
+            // if isChanged is true then update the dateModified and save the note
+            note.dateModified = NSDate()
+        
+            var error: NSError?
+            if !managedContext.save(&error) {
+                println("Could not save: \(error)")
+            } else {
+                println("Note updated")
+                tmpNote = note
+            }
+        } else {
+            println("Nothing was changed. No update is necessary")
+        }
+        
+        return tmpNote
     }
     
     func addNewNote() -> Note? {
@@ -110,11 +135,7 @@ class DetailViewController: UIViewController, UITextViewDelegate {
         if count(bodyTextView.text) > 0 && bodyTextView.text != PLACEHOLDER_TEXT {
             let noteEntity = NSEntityDescription.entityForName("Note", inManagedObjectContext: managedContext)
             let note = Note(entity: noteEntity!, insertIntoManagedObjectContext: managedContext)
-        
-            // temporarily setting the note title this way.
-            // note title will be changed to UITextField in user story 2
-            note.title = "\(noteTitle.text!)_\(noteCount++)"
-        
+            note.title = noteTitle.text
             note.dateCreated = NSDate()
             note.dateModified = NSDate()
         
