@@ -16,7 +16,6 @@ class MainNotesListTableViewController: UITableViewController, DetailViewControl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -74,9 +73,6 @@ class MainNotesListTableViewController: UITableViewController, DetailViewControl
             addNewNoteVC.delegate = self
             addNewNoteVC.managedContext = managedContext
             
-            // temporary for user story 1
-            addNewNoteVC.noteCount = notes.count
-            
         } else if segue.identifier == "editNote" {
             let editNoteVC = segue.destinationViewController as! DetailViewController
             editNoteVC.delegate = self
@@ -118,4 +114,5 @@ class MainNotesListTableViewController: UITableViewController, DetailViewControl
     func detailViewControllerDidNoTextEntered(controller: DetailViewController) {
         controller.navigationController?.popViewControllerAnimated(true)
     }
+    
 }

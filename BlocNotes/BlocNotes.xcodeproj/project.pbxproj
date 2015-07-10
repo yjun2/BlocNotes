@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E5BDB201B4BB050004F2F61 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5BDB1F1B4BB050004F2F61 /* ShareViewController.swift */; };
+		2E5BDB221B4BB050004F2F61 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E5BDB211B4BB050004F2F61 /* MainInterface.storyboard */; };
+		2E5BDB251B4BB050004F2F61 /* ShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2E5BDB1B1B4BB050004F2F61 /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		2E694F581B4E1EBB00F676C7 /* BlocNotes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2E8057201B4254F2006B1C0F /* BlocNotes.xcdatamodeld */; };
+		2E694F5A1B4E210100F676C7 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC28A431B43AB3B00ABB1BD /* Content.swift */; };
+		2E694F5B1B4E210400F676C7 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC28A411B43AB3A00ABB1BD /* Note.swift */; };
+		2E694F5C1B4E250D00F676C7 /* BlocNotes.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 2E8057201B4254F2006B1C0F /* BlocNotes.xcdatamodeld */; };
+		2E694F5E1B4E296800F676C7 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E694F5D1B4E296800F676C7 /* CoreDataStack.swift */; };
+		2E694F5F1B4E296800F676C7 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E694F5D1B4E296800F676C7 /* CoreDataStack.swift */; };
+		2E694F601B4E47F900F676C7 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5BDB1F1B4BB050004F2F61 /* ShareViewController.swift */; };
 		2E80571F1B4254F2006B1C0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E80571E1B4254F2006B1C0F /* AppDelegate.swift */; };
 		2E8057221B4254F2006B1C0F /* BlocNotes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2E8057201B4254F2006B1C0F /* BlocNotes.xcdatamodeld */; };
 		2E8057271B4254F2006B1C0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E8057251B4254F2006B1C0F /* Main.storyboard */; };
@@ -20,6 +30,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2E5BDB231B4BB050004F2F61 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2E8057111B4254F2006B1C0F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2E5BDB1A1B4BB050004F2F61;
+			remoteInfo = ShareExtension;
+		};
 		2E8057321B4254F2006B1C0F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2E8057111B4254F2006B1C0F /* Project object */;
@@ -29,7 +46,28 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		2E5BDB291B4BB050004F2F61 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				2E5BDB251B4BB050004F2F61 /* ShareExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		2E5BDB1B1B4BB050004F2F61 /* ShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E5BDB1E1B4BB050004F2F61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2E5BDB1F1B4BB050004F2F61 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		2E5BDB211B4BB050004F2F61 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		2E5BDB2A1B4BB16D004F2F61 /* BlocNotes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = BlocNotes.entitlements; sourceTree = "<group>"; };
+		2E694F5D1B4E296800F676C7 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		2E694F611B4E498500F676C7 /* ShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ShareExtension.entitlements; sourceTree = "<group>"; };
 		2E8057191B4254F2006B1C0F /* BlocNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlocNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E80571D1B4254F2006B1C0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E80571E1B4254F2006B1C0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +85,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2E5BDB181B4BB050004F2F61 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2E8057161B4254F2006B1C0F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -64,11 +109,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E5BDB1C1B4BB050004F2F61 /* ShareExtension */ = {
+			isa = PBXGroup;
+			children = (
+				2E694F611B4E498500F676C7 /* ShareExtension.entitlements */,
+				2E5BDB1F1B4BB050004F2F61 /* ShareViewController.swift */,
+				2E5BDB211B4BB050004F2F61 /* MainInterface.storyboard */,
+				2E5BDB1D1B4BB050004F2F61 /* Supporting Files */,
+			);
+			path = ShareExtension;
+			sourceTree = "<group>";
+		};
+		2E5BDB1D1B4BB050004F2F61 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2E5BDB1E1B4BB050004F2F61 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		2E8057101B4254F2006B1C0F = {
 			isa = PBXGroup;
 			children = (
 				2E80571B1B4254F2006B1C0F /* BlocNotes */,
 				2E8057341B4254F2006B1C0F /* BlocNotesTests */,
+				2E5BDB1C1B4BB050004F2F61 /* ShareExtension */,
 				2E80571A1B4254F2006B1C0F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -78,6 +143,7 @@
 			children = (
 				2E8057191B4254F2006B1C0F /* BlocNotes.app */,
 				2E8057311B4254F2006B1C0F /* BlocNotesTests.xctest */,
+				2E5BDB1B1B4BB050004F2F61 /* ShareExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -85,8 +151,10 @@
 		2E80571B1B4254F2006B1C0F /* BlocNotes */ = {
 			isa = PBXGroup;
 			children = (
+				2E5BDB2A1B4BB16D004F2F61 /* BlocNotes.entitlements */,
 				2EC28A431B43AB3B00ABB1BD /* Content.swift */,
 				2EC28A411B43AB3A00ABB1BD /* Note.swift */,
+				2E694F5D1B4E296800F676C7 /* CoreDataStack.swift */,
 				2E80571E1B4254F2006B1C0F /* AppDelegate.swift */,
 				2E8057411B4256F2006B1C0F /* MainNotesListTableViewController.swift */,
 				2EC28A331B438CB700ABB1BD /* DetailViewController.swift */,
@@ -127,6 +195,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2E5BDB1A1B4BB050004F2F61 /* ShareExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2E5BDB281B4BB050004F2F61 /* Build configuration list for PBXNativeTarget "ShareExtension" */;
+			buildPhases = (
+				2E5BDB171B4BB050004F2F61 /* Sources */,
+				2E5BDB181B4BB050004F2F61 /* Frameworks */,
+				2E5BDB191B4BB050004F2F61 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ShareExtension;
+			productName = ShareExtension;
+			productReference = 2E5BDB1B1B4BB050004F2F61 /* ShareExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		2E8057181B4254F2006B1C0F /* BlocNotes */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2E80573B1B4254F2006B1C0F /* Build configuration list for PBXNativeTarget "BlocNotes" */;
@@ -134,10 +219,12 @@
 				2E8057151B4254F2006B1C0F /* Sources */,
 				2E8057161B4254F2006B1C0F /* Frameworks */,
 				2E8057171B4254F2006B1C0F /* Resources */,
+				2E5BDB291B4BB050004F2F61 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				2E5BDB241B4BB050004F2F61 /* PBXTargetDependency */,
 			);
 			name = BlocNotes;
 			productName = BlocNotes;
@@ -171,8 +258,23 @@
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Yong Jun";
 				TargetAttributes = {
+					2E5BDB1A1B4BB050004F2F61 = {
+						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = TJLGZ6UGDP;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 					2E8057181B4254F2006B1C0F = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = TJLGZ6UGDP;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					2E8057301B4254F2006B1C0F = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -195,15 +297,25 @@
 			targets = (
 				2E8057181B4254F2006B1C0F /* BlocNotes */,
 				2E8057301B4254F2006B1C0F /* BlocNotesTests */,
+				2E5BDB1A1B4BB050004F2F61 /* ShareExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2E5BDB191B4BB050004F2F61 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E5BDB221B4BB050004F2F61 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2E8057171B4254F2006B1C0F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E694F5C1B4E250D00F676C7 /* BlocNotes.xcdatamodeld in Resources */,
 				2E8057271B4254F2006B1C0F /* Main.storyboard in Resources */,
 				2E80572C1B4254F2006B1C0F /* LaunchScreen.xib in Resources */,
 				2E8057291B4254F2006B1C0F /* Images.xcassets in Resources */,
@@ -220,6 +332,18 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2E5BDB171B4BB050004F2F61 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E5BDB201B4BB050004F2F61 /* ShareViewController.swift in Sources */,
+				2E694F581B4E1EBB00F676C7 /* BlocNotes.xcdatamodeld in Sources */,
+				2E694F5F1B4E296800F676C7 /* CoreDataStack.swift in Sources */,
+				2E694F5A1B4E210100F676C7 /* Content.swift in Sources */,
+				2E694F5B1B4E210400F676C7 /* Note.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2E8057151B4254F2006B1C0F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -230,6 +354,8 @@
 				2E8057221B4254F2006B1C0F /* BlocNotes.xcdatamodeld in Sources */,
 				2EC28A341B438CB700ABB1BD /* DetailViewController.swift in Sources */,
 				2EC28A441B43AB3B00ABB1BD /* Content.swift in Sources */,
+				2E694F601B4E47F900F676C7 /* ShareViewController.swift in Sources */,
+				2E694F5E1B4E296800F676C7 /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,6 +370,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2E5BDB241B4BB050004F2F61 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2E5BDB1A1B4BB050004F2F61 /* ShareExtension */;
+			targetProxy = 2E5BDB231B4BB050004F2F61 /* PBXContainerItemProxy */;
+		};
 		2E8057331B4254F2006B1C0F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2E8057181B4254F2006B1C0F /* BlocNotes */;
@@ -271,6 +402,40 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2E5BDB261B4BB050004F2F61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ShareExtension/ShareExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ShareExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		2E5BDB271B4BB050004F2F61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ShareExtension/ShareExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = ShareExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		2E8057391B4254F2006B1C0F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -288,6 +453,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yong Jun (3CJ74UPL36)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -358,9 +524,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BlocNotes/BlocNotes.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yong Jun (3CJ74UPL36)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = BlocNotes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -368,9 +540,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BlocNotes/BlocNotes.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = BlocNotes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -411,6 +589,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2E5BDB281B4BB050004F2F61 /* Build configuration list for PBXNativeTarget "ShareExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E5BDB261B4BB050004F2F61 /* Debug */,
+				2E5BDB271B4BB050004F2F61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2E8057141B4254F2006B1C0F /* Build configuration list for PBXProject "BlocNotes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

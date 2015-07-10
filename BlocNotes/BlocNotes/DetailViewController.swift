@@ -18,7 +18,6 @@ class DetailViewController: UIViewController, UITextViewDelegate {
     let PLACEHOLDER_TEXT = "Write your note..."
     var managedContext: NSManagedObjectContext!
     var noteToView: Note?
-    var noteCount = 0
     
     @IBOutlet weak var bodyTextView: UITextView!
     @IBOutlet weak var noteTitle: UITextField!
