@@ -19,21 +19,7 @@ class ShareViewController: SLComposeServiceViewController {
     }
 
     override func didSelectPost() {
-//        addNewNote()
-        
-        var inputItem = self.extensionContext?.inputItems.first as! NSExtensionItem
-        var provider = inputItem.attachments?.first as! NSItemProvider
-        if provider.hasItemConformingToTypeIdentifier(kUTTypeURL as String) {
-            provider.loadItemForTypeIdentifier(kUTTypeURL as String,
-                options: nil,
-                completionHandler: { (item, error) -> Void in
-                    if let x = item as? NSURL {
-                        var urlString = x.absoluteString
-                        println("urlString: \(urlString)")
-                    }
-            })
-        }
-        
+        addNewNote()
         self.extensionContext!.completeRequestReturningItems([], completionHandler: nil)
     }
 

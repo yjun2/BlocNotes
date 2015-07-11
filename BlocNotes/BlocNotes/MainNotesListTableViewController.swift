@@ -9,18 +9,31 @@
 import UIKit
 import CoreData
 
-class MainNotesListTableViewController: UITableViewController, DetailViewControllerDelegate {
+class MainNotesListTableViewController: UITableViewController, DetailViewControllerDelegate, NSFetchedResultsControllerDelegate, UISearchResultsUpdating {
 
+    let searchController = UISearchController(searchResultsController: nil)
     var managedContext: NSManagedObjectContext!
-    var notes = [Note]()
+    
+    var noteFetchResultsController: NSFetchedResultsController!
+    var filteredNoteResultsController: NSFetchedResultsController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // fetch all notes first
+        fetchAllNotes()
+        noteFetchResultsController.delegate = self
+        
+        // setup search bar
+        searchController.searchResultsUpdater = self
+        searchController.hidesNavigationBarDuringPresentation = true
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.sizeToFit()
+        self.tableView.tableHeaderView = searchController.searchBar
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        fetchAllNotes()
     }
     
     override func didReceiveMemoryWarning() {
@@ -29,14 +42,28 @@ class MainNotesListTableViewController: UITableViewController, DetailViewControl
     
     // MARK: - Table view data source
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return notes.count
+        
+        if searchController.active && count(searchController.searchBar.text) > 0 {
+            let sectionInfo = filteredNoteResultsController!.sections![section] as! NSFetchedResultsSectionInfo
+            return sectionInfo.numberOfObjects
+        } else {
+            let sectionInfo = noteFetchResultsController!.sections![section] as! NSFetchedResultsSectionInfo
+            return sectionInfo.numberOfObjects
+        }
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("NoteItem", forIndexPath: indexPath) as! UITableViewCell
 
         let label = cell.viewWithTag(1000) as! UILabel
-        label.text = notes[indexPath.row].title
+        
+        if searchController.active && count(searchController.searchBar.text) > 0 {
+            let note = filteredNoteResultsController.objectAtIndexPath(indexPath) as! Note
+            label.text = note.title
+        } else {
+            let note = noteFetchResultsController.objectAtIndexPath(indexPath) as! Note
+            label.text = note.title
+        }
 
         return cell
     }
@@ -45,22 +72,18 @@ class MainNotesListTableViewController: UITableViewController, DetailViewControl
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             
-            // get the reference to the note object to be deleted
-            let noteObject = notes[indexPath.row] as Note
-            
-            // remove from the array first
-            notes.removeAtIndex(indexPath.row)
-            
-            // remove from core data
-            managedContext.deleteObject(noteObject)
+            if searchController.active && count(searchController.searchBar.text) > 0 {
+                managedContext.deleteObject(filteredNoteResultsController.objectAtIndexPath(indexPath) as! Note)
+            } else {
+                // remove from core data
+                managedContext.deleteObject(noteFetchResultsController.objectAtIndexPath(indexPath) as! Note)
+            }
             
             // commit
             var error: NSError?
             if !managedContext.save(&error) {
                 println("Could not delete: \(error)")
             }
-            
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         }
     }
     
@@ -79,33 +102,40 @@ class MainNotesListTableViewController: UITableViewController, DetailViewControl
             editNoteVC.managedContext = managedContext
             
             if let indexPath = tableView.indexPathForCell(sender as! UITableViewCell) {
-                editNoteVC.noteToView = notes[indexPath.row]
+                if searchController.active {
+                    editNoteVC.noteToView = filteredNoteResultsController.objectAtIndexPath(indexPath) as? Note
+                    searchController.active = false
+                } else {
+                    editNoteVC.noteToView = noteFetchResultsController.objectAtIndexPath(indexPath) as? Note
+                }
+                
+                
             }
         }
     }
     
     // MARK: - Core Data Fetch
     func fetchAllNotes() {
-        var error: NSError?
-        
-        let fetchRequest = NSFetchRequest(entityName: "Note")
+        // setup fetch request
+        let noteFetchRequest = NSFetchRequest(entityName: "Note")
         
         // sort the request by dateModified in descending order
         let sortByModifiedDateDescriptor = NSSortDescriptor(key: "dateModified", ascending: false)
-        fetchRequest.sortDescriptors = [sortByModifiedDateDescriptor]
+        noteFetchRequest.sortDescriptors = [sortByModifiedDateDescriptor]
         
-        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as! [Note]?
-        if let results = fetchedResults {
-            notes = results
-        } else {
-            println("Could not fetch \(error)")
+        noteFetchResultsController = NSFetchedResultsController(fetchRequest: noteFetchRequest,
+            managedObjectContext: managedContext,
+            sectionNameKeyPath: nil,
+            cacheName: nil)
+        
+        var error: NSError? = nil
+        if (!noteFetchResultsController.performFetch(&error)) {
+            println("Error: \(error?.description)")
         }
-        
-        
-    }
-
-    // MARK: - DetailViewControllerDelegate
     
+    }
+    
+    // MARK: - DetailViewControllerDelegate
     func detailViewController(controller: DetailViewController, didFinishAddNewNote: Note) {
         fetchAllNotes()
         tableView.reloadData()
@@ -113,6 +143,63 @@ class MainNotesListTableViewController: UITableViewController, DetailViewControl
     
     func detailViewControllerDidNoTextEntered(controller: DetailViewController) {
         controller.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    // MARK: - SearchResultsUpdating 
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        println("searchbar text entered: \(searchController.searchBar.text)")
+        
+        if count(searchController.searchBar.text) > 0 {
+            let noteFetchRequest = NSFetchRequest(entityName: "Note")
+        
+            let titlePredicate = NSPredicate(format: "title CONTAINS[c] %@", searchController.searchBar.text)
+            let contentPredicate = NSPredicate(format: "content.body CONTAINS[c] %@", searchController.searchBar.text)
+            
+            let notePredicate = NSCompoundPredicate(type: .OrPredicateType, subpredicates: [titlePredicate, contentPredicate])
+            noteFetchRequest.predicate = notePredicate
+        
+            let sortByModifiedDateDescriptor = NSSortDescriptor(key: "title", ascending: true)
+            noteFetchRequest.sortDescriptors = [sortByModifiedDateDescriptor]
+            
+            filteredNoteResultsController = NSFetchedResultsController(fetchRequest: noteFetchRequest,
+                managedObjectContext: managedContext,
+                sectionNameKeyPath: nil,
+                cacheName: nil)
+        
+            var error: NSError? = nil
+            if (!filteredNoteResultsController.performFetch(&error)) {
+                println("Error: \(error?.description)")
+            }
+        
+            let sectionInfo = filteredNoteResultsController!.sections![0] as! NSFetchedResultsSectionInfo
+            println("count: \(sectionInfo.numberOfObjects)")
+            
+            tableView.reloadData()
+        } else {
+            fetchAllNotes()
+            tableView.reloadData()
+        }
+    }
+    
+    // MARK: - NSFetchedResultsControllerDelegate
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        tableView.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        tableView.endUpdates()
+    }
+    
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        
+        switch type {
+        case .Insert:
+            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
+        case .Delete:
+            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
+        default:
+            break
+        }
     }
     
 }

@@ -20,7 +20,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RJZ-Pp-d7c">
-                                            <rect key="frame" x="13" y="11" width="571" height="21"/>
+                                            <rect key="frame" x="12" y="11" width="543" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -28,8 +28,8 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="RJZ-Pp-d7c" firstAttribute="centerY" secondItem="ihk-4Z-UNE" secondAttribute="centerY" id="WMC-cZ-ZmO"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="RJZ-Pp-d7c" secondAttribute="trailing" constant="-25" id="k9v-bz-TNk"/>
-                                        <constraint firstItem="RJZ-Pp-d7c" firstAttribute="leading" secondItem="ihk-4Z-UNE" secondAttribute="leadingMargin" constant="5" id="uak-le-Jlf"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="RJZ-Pp-d7c" secondAttribute="trailing" constant="4" id="k9v-bz-TNk"/>
+                                        <constraint firstItem="RJZ-Pp-d7c" firstAttribute="leading" secondItem="ihk-4Z-UNE" secondAttribute="leadingMargin" constant="4" id="uak-le-Jlf"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -67,13 +67,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DSe-Nm-g9f">
-                                <rect key="frame" x="15" y="72" width="568" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DSe-Nm-g9f">
+                                <rect key="frame" x="16" y="84" width="568" height="21"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jnu-EC-76F">
-                                <rect key="frame" x="16" y="110" width="568" height="457"/>
+                                <rect key="frame" x="11" y="113" width="568" height="466"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -81,13 +82,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Jnu-EC-76F" firstAttribute="top" secondItem="DSe-Nm-g9f" secondAttribute="bottom" constant="8" id="4eq-xg-fiC"/>
-                            <constraint firstItem="Jnu-EC-76F" firstAttribute="leading" secondItem="HeV-hh-B79" secondAttribute="leadingMargin" id="cDr-J1-tDW"/>
-                            <constraint firstItem="DSe-Nm-g9f" firstAttribute="leading" secondItem="HeV-hh-B79" secondAttribute="leadingMargin" constant="-1" id="edX-yx-2ds"/>
-                            <constraint firstItem="Jnu-EC-76F" firstAttribute="trailing" secondItem="HeV-hh-B79" secondAttribute="trailingMargin" id="fe0-a1-jX1"/>
-                            <constraint firstItem="DSe-Nm-g9f" firstAttribute="centerX" secondItem="Jnu-EC-76F" secondAttribute="centerX" constant="-1" id="pQ9-yW-EHu"/>
-                            <constraint firstItem="qMF-Ik-wks" firstAttribute="top" secondItem="Jnu-EC-76F" secondAttribute="bottom" constant="33" id="pfJ-23-hNt"/>
-                            <constraint firstItem="DSe-Nm-g9f" firstAttribute="trailing" secondItem="HeV-hh-B79" secondAttribute="trailingMargin" constant="-1" id="tRO-EV-DfN"/>
-                            <constraint firstItem="DSe-Nm-g9f" firstAttribute="top" secondItem="k3e-dk-rF7" secondAttribute="bottom" constant="8" id="xpC-6Y-LLb"/>
+                            <constraint firstItem="Jnu-EC-76F" firstAttribute="trailing" secondItem="HeV-hh-B79" secondAttribute="trailingMargin" constant="-5" id="fe0-a1-jX1"/>
+                            <constraint firstItem="DSe-Nm-g9f" firstAttribute="centerX" secondItem="Jnu-EC-76F" secondAttribute="centerX" constant="5" id="pQ9-yW-EHu"/>
+                            <constraint firstItem="qMF-Ik-wks" firstAttribute="top" secondItem="Jnu-EC-76F" secondAttribute="bottom" constant="21" id="pfJ-23-hNt"/>
+                            <constraint firstItem="DSe-Nm-g9f" firstAttribute="leading" secondItem="HeV-hh-B79" secondAttribute="leadingMargin" id="tGe-1l-1tE"/>
+                            <constraint firstItem="DSe-Nm-g9f" firstAttribute="trailing" secondItem="HeV-hh-B79" secondAttribute="trailingMargin" id="tRO-EV-DfN"/>
+                            <constraint firstItem="DSe-Nm-g9f" firstAttribute="top" secondItem="k3e-dk-rF7" secondAttribute="bottom" constant="20" id="xpC-6Y-LLb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Note" id="lDi-Cu-fgG">
