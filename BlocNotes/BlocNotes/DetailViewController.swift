@@ -14,20 +14,17 @@ protocol DetailViewControllerDelegate: class {
     func detailViewController(controller: DetailViewController, didFinishAddNewNote: Note)
 }
 
-class DetailViewController: UIViewController, UITextViewDelegate {
+class DetailViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     let PLACEHOLDER_TEXT = "Write your note..."
     var managedContext: NSManagedObjectContext!
     var noteToView: Note?
+    weak var delegate: DetailViewControllerDelegate?
     
     @IBOutlet weak var bodyTextView: UITextView!
     @IBOutlet weak var noteTitle: UITextField!
     
-    
-    weak var delegate: DetailViewControllerDelegate?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         if let existingNote = noteToView {
             title = existingNote.title
@@ -37,7 +34,13 @@ class DetailViewController: UIViewController, UITextViewDelegate {
             initializePlaceHolderText(bodyTextView, placeholder: PLACEHOLDER_TEXT)
         }
         
+        let tap = UITapGestureRecognizer(target: self, action: "tapPressed:")
+        tap.numberOfTapsRequired = 1
+        tap.numberOfTouchesRequired = 1
+        bodyTextView.addGestureRecognizer(tap)
+        
         bodyTextView.delegate = self
+        noteTitle.delegate = self
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -158,4 +161,15 @@ class DetailViewController: UIViewController, UITextViewDelegate {
         return tmpNote
     }
     
+    // MARK: UITapGesturizer method
+    func tapPressed(recognizer: UITapGestureRecognizer) {
+        bodyTextView.editable = true
+        bodyTextView.becomeFirstResponder()
+    }
+    
+    // MARK: UITextFieldDelegate method
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        bodyTextView.editable = false
+        return true
+    }
 }
