@@ -13,6 +13,36 @@ import MobileCoreServices
 
 class ShareViewController: SLComposeServiceViewController {
     
+    lazy var managedContext = CoreDataStack().getCoreDataContext()
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Listen for NSPersistentStoreDidImportUbiquitousContentChangesNotification notification when
+        // updates have been applied to data
+//        NSNotificationCenter.defaultCenter().addObserver(self,
+//            selector: "respondToICloudChanges:",
+//            name: NSPersistentStoreDidImportUbiquitousContentChangesNotification,
+//            object: self.managedContext.persistentStoreCoordinator)
+
+    }
+    
+//    override func viewWillDisappear(animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        NSNotificationCenter.defaultCenter().removeObserver(self,
+//            name: NSPersistentStoreDidImportUbiquitousContentChangesNotification,
+//            object:
+//            self.managedContext.persistentStoreCoordinator)
+//    }
+    
+    // MARK: - iCloud changes
+//    func respondToICloudChanges(notification: NSNotification) {
+//        println("merging iCloud share extension content changes")
+//        self.managedContext.performBlock { () -> Void in
+//            self.managedContext.mergeChangesFromContextDidSaveNotification(notification)
+//        }
+//    }
+    
     override func isContentValid() -> Bool {
         // Do validation of contentText and/or NSExtensionContext attachments here
         return true
@@ -30,8 +60,6 @@ class ShareViewController: SLComposeServiceViewController {
     
     func addNewNote() -> Note? {
         var tmpNote: Note? = nil
-        var coreDataStack = CoreDataStack.sharedInstance
-        let managedContext = coreDataStack.getCoreDataContext()
         
         let noteEntity = NSEntityDescription.entityForName("Note", inManagedObjectContext: managedContext)
         let note = Note(entity: noteEntity!, insertIntoManagedObjectContext: managedContext)

@@ -101,6 +101,7 @@
                     <connections>
                         <outlet property="bodyTextView" destination="Jnu-EC-76F" id="HDZ-HT-LN8"/>
                         <outlet property="noteTitle" destination="DSe-Nm-g9f" id="T1B-uw-pn2"/>
+                        <outlet property="shareBarButton" destination="r1f-hN-fqo" id="Daz-cM-t8v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6XK-EM-bfz" userLabel="First Responder" sceneMemberID="firstResponder"/>

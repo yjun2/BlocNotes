@@ -22,6 +22,7 @@ class DetailViewController: UIViewController, UITextViewDelegate, UITextFieldDel
     
     @IBOutlet weak var bodyTextView: UITextView!
     @IBOutlet weak var noteTitle: UITextField!
+    @IBOutlet weak var shareBarButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +57,15 @@ class DetailViewController: UIViewController, UITextViewDelegate, UITextFieldDel
         
         if contentToShare.count > 0 {
             let activityVC = UIActivityViewController(activityItems: contentToShare, applicationActivities: nil)
-            presentViewController(activityVC, animated: true, completion: nil)
+            
+            if self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClass.Regular {
+                // Disply a popover in iPad
+                var popOver = UIPopoverController(contentViewController: activityVC)
+                popOver.presentPopoverFromBarButtonItem(shareBarButton, permittedArrowDirections: .Any, animated: true)
+            } else {
+                
+                presentViewController(activityVC, animated: true, completion: nil)
+            }
         }
     }
     
